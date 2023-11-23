@@ -27,27 +27,24 @@ class _ExpenseListState extends State<ExpenseList> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
+    return Center(
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         const SizedBox(
-          height: 250,
-          child: Text("Grafik"),
+          height: 150,
+          child: Text("Grafik Bölümü"),
         ),
         Expanded(
-          child: ListView.separated(
-            padding: const EdgeInsets.all(10),
-            itemCount: expenses.length,
-            itemBuilder: (context, index) {
-              return Text(expenses[index].name);
-            },
-            separatorBuilder: (BuildContext context, int index) =>
-                const Divider(
-              color: Color.fromARGB(287, 47, 15, 87),
-            ),
-          ),
+          child: ListView.builder(
+              itemCount: expenses.length,
+              itemBuilder: (context, index) {
+                return ExpenseItem(expenses[index]);
+              }),
         ),
-        const Text("Liste bitişi")
-      ],
+        const SizedBox(
+          height: 150,
+          child: Text("Burası bottom bar."),
+        )
+      ]),
     );
   }
 }

@@ -3,7 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
-const uuid = Uuid();
+const uuid =
+    Uuid(); // uuid kütüphanesinden Uuid classı oluşturup rastgele nir id oluşturuyoryz.
 
 enum Category {
   food,
@@ -26,21 +27,14 @@ class Expense {
     required this.date,
     required this.category,
   }) : id = uuid.v4(); //const bir değeri almak yerine o değere atama yapmık
-
+  //uuid paketi ekledim.
   final String
       id; // string olduğu durumlarda uuid,guid denilen karmaşık text kullanılır.
   final String name;
   final double price;
   final DateTime date;
   final Category category;
-
-  String get formattedDate {
-    var DateFormat;
-
-    var formatter = DateFormat.yMd();
-    return formatter.format(date);
-  }
+}
 
 //Enums : Numaralandırma
 //Enumerated Type
-}

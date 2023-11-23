@@ -32,3 +32,50 @@ class ExpenseItem extends StatelessWidget {
     );
   }
 }
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Snackbar Örneği'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // Snackbar göstermek için Scaffold.of(context).showSnackBar() kullanılır.
+            final snackBar = SnackBar(
+              content: Text('Merhaba, bu bir Snackbar!'),
+              duration: Duration(
+                  seconds:
+                      3), // Snackbar'ın ne kadar süre gösterileceğini belirtir.
+              action: SnackBarAction(
+                label: 'Tamam',
+                onPressed: () {
+                  // Snackbar üzerindeki "Tamam" butonuna basıldığında yapılacak işlemler
+                  print('Snackbar kapatıldı.');
+                },
+              ),
+            );
+
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          },
+          child: Text('Snackbar Göster'),
+        ),
+      ),
+    );
+  }
+}
